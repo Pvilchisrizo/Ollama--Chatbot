@@ -20,7 +20,7 @@
 
 // Grab references to the three DOM elements we need:
 const form = document.getElementById("chat-input-form"); // The <form> wrapper — we listen for its "submit" event
-const responseBox = document.getElementById("chatbox-response"); // The <div> where we display Ollama's answer (BUG: ID mismatch with HTML)
+const responseBox = document.getElementById("chatbot-response"); // The <div> where we display Ollama's answer
 const promptBox = document.getElementById("prompt"); // The <input> where the user types their question
 
 // Attach an async submit handler to the form.
