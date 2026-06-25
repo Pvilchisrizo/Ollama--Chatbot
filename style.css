@@ -1,7 +1,22 @@
+/*
+ * SHARED STYLESHEET — used by both index.html (chatbot) and sentiment-analysis.html.
+ *
+ * Design approach:
+ * - Dark theme (background #111) with light text for readability.
+ * - Monospace font stack for a terminal/code-editor aesthetic.
+ * - Flexbox layout centers content vertically and horizontally.
+ * - Max-width of 720px keeps the chat area readable on wide screens.
+ */
+
+/* Reset: makes every element include padding and border in its total width/height,
+   preventing layout surprises when adding padding or borders. */
 * {
   box-sizing: border-box;
 }
 
+/* Page-level layout: a centered column using Flexbox.
+   - min-height: 100vh ensures the dark background covers the full viewport.
+   - gap: 1rem adds consistent spacing between child elements (link, response box, form). */
 body {
   margin: 0;
   min-height: 100vh;
@@ -17,6 +32,11 @@ body {
   gap: 1rem;
 }
 
+/* The main area where AI responses are displayed.
+   - white-space: pre-wrap preserves line breaks and whitespace from the AI output
+     while still wrapping long lines to prevent horizontal overflow.
+   - min-height: 320px reserves visible space so the layout doesn't jump
+     when the response loads. */
 #chatbot-response {
   width: 100%;
   max-width: 720px;
@@ -27,6 +47,7 @@ body {
   white-space: pre-wrap;
 }
 
+/* The form holds the text input and submit button side by side using Flexbox. */
 #chat-input-form {
   width: 100%;
   max-width: 720px;
@@ -34,6 +55,10 @@ body {
   gap: 0.5rem;
 }
 
+/* The text input field.
+   - flex: 1 makes it expand to fill all remaining horizontal space
+     after the button takes its natural width.
+   - font: inherit ensures the input uses the same monospace font as the page. */
 #prompt {
   flex: 1;
   padding: 0.75rem;
@@ -43,6 +68,8 @@ body {
   font: inherit;
 }
 
+/* Submit button with hover feedback.
+   - cursor: pointer gives the hand icon on hover to signal it's clickable. */
 button {
   padding: 0.75rem 1rem;
   border: 1px solid #444;
@@ -56,6 +83,8 @@ button:hover {
   background: #333;
 }
 
+/* Used by the sentiment-analysis page to display the sentiment emoji
+   at a large, visually prominent size. */
 .big-text {
   font-size: 90px;
 }

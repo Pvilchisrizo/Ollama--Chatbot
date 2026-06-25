@@ -3,14 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Links the shared dark-theme stylesheet used by both pages -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- "defer" ensures script.js runs only after the DOM is fully parsed,
+         so getElementById calls inside the script won't return null -->
     <script src="script.js" defer></script>
+
     <title>Chatbot</title>
   </head>
 
   <body>
+    <!-- Navigation link to the second feature of the app: sentiment analysis -->
     <a href="sentiment-analysis.html">Sentiment Analysis Demo</a>
+
+    <!-- This div is where the AI-generated response will be displayed.
+         script.js targets this element by its ID to inject the Ollama response text.
+         NOTE: there is an ID mismatch — this element is "chatbot-response"
+         but script.js queries for "chatbox-response" (typo: "box" vs "bot").
+         This means responses will NOT render on screen. Fix by aligning the IDs. -->
     <div id="chatbot-response"></div>
+
+    <!-- Chat input form: captures the user's prompt and sends it to Ollama.
+         The form's "submit" event is intercepted by script.js (event.preventDefault)
+         so the page does NOT reload — the request is handled via fetch (AJAX). -->
     <form id="chat-input-form">
       <input
         id="prompt"

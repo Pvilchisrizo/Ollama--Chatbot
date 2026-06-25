@@ -3,12 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Reuses the same dark-theme stylesheet as the main chatbot page -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- sentiment.js handles the analysis logic.
+         "defer" ensures the script runs after the DOM is ready,
+         so it can safely query elements by their IDs. -->
     <script src="sentiment.js" defer></script>
+
     <title>Sentiment Analysis</title>
   </head>
   <body>
+    <!-- Response area where the sentiment result (e.g., an emoji or score) is shown.
+         The "big-text" class makes the output display at 90px font size
+         so sentiment emojis are large and visually clear.
+         NOTE: sentiment.js also auto-runs analysis on a hardcoded list of movie
+         reviews on page load (getOverallSentimentFromReviewList), logging results
+         to the browser console — the form below is for additional manual analysis. -->
     <div id="chatbot-response" class="big-text"></div>
+
+    <!-- Input form for manual sentiment analysis.
+         The user types text, clicks "Analyze", and sentiment.js sends it
+         to Ollama to classify on a 0-4 sentiment scale. -->
     <form id="chat-input-form">
       <input
         id="prompt"
